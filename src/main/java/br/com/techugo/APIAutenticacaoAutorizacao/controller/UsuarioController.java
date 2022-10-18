@@ -17,10 +17,17 @@ public class UsuarioController {
     private UsuarioRepository usuarioRepository;
 
     @RequestMapping("/usuarios")
-    public List<UsuarioDto> listar(){
-        List<Usuario> usuarios = usuarioRepository.findAll();
-        return UsuarioDto.converter(usuarios);
-    }
 
+    public List<UsuarioDto> listar(String nome){
+        if (nome == null){
+            List<Usuario> usuarios = usuarioRepository.findAll();
+            return UsuarioDto.converter(usuarios);
+        }else {
+            List<Usuario> usuarios = usuarioRepository.findByNome(nome);
+            return UsuarioDto.converter(usuarios);
+        }
+
+
+    }
 
 }
