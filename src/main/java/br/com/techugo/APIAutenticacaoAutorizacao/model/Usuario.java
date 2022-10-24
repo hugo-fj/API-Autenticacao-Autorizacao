@@ -5,6 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.Objects;
 public class Usuario implements UserDetails{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String email;
@@ -23,9 +24,13 @@ public class Usuario implements UserDetails{
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Perfil> perfis = new ArrayList<>();
 
-
     public Usuario() {
+    }
 
+    public Usuario(String nome, String email, String senha){
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
     }
 
     public Usuario(Long id, String nome, String email, String senha, List<Perfil> perfis) {
@@ -75,6 +80,8 @@ public class Usuario implements UserDetails{
     public void setPerfis(List<Perfil> perfis) {
         this.perfis = perfis;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

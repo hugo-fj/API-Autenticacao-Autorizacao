@@ -1,8 +1,5 @@
 package br.com.techugo.APIAutenticacaoAutorizacao.model;
-
-
 import org.springframework.security.core.GrantedAuthority;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,20 +9,14 @@ import java.util.Objects;
 @Entity
 public class Perfil implements GrantedAuthority {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nome;
-
     public Perfil() {
-
     }
-
-    public Perfil(Long id, String nome) {
-        this.id = id;
+    public Perfil(String nome ){
         this.nome = nome;
     }
-
     public Long getId() {
         return id;
     }
@@ -41,6 +32,7 @@ public class Perfil implements GrantedAuthority {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
 
     @Override
     public boolean equals(Object o) {
