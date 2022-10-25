@@ -22,4 +22,11 @@ public class PerfilForm {
     public Perfil converter(PerfilRepository perfilRepository) {
         return new Perfil(nome);
     }
+
+    public Perfil atualizar(Long id, PerfilRepository perfilRepository){
+        Perfil perfil = perfilRepository.getReferenceById(id);
+        perfil.setNome(this.nome);
+        return perfil;
+    }
+
 }

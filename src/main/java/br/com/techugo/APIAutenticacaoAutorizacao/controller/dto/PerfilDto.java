@@ -1,6 +1,7 @@
 package br.com.techugo.APIAutenticacaoAutorizacao.controller.dto;
 import br.com.techugo.APIAutenticacaoAutorizacao.model.Perfil;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class PerfilDto {
@@ -11,6 +12,7 @@ public class PerfilDto {
         this.id = perfil.getId();
         this.nome = perfil.getNome();
     }
+
     public Long getId() {
         return id;
     }
